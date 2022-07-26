@@ -1,53 +1,46 @@
 package App;
 
-import javax.swing.JOptionPane;
-
+import javax.swing.*;
+import java.awt.*;
+import java.awt.GridLayout;
 import java.util.Scanner; // I use scanner because it's command line.
+import java.awt.*;
+import java.awt.event.*;  
 
-
-public class Gui {
-
+final public class Gui extends JFrame{
+	//Scanner input1 = new Scanner(System.in);
+//    System.out.println("Enter Username : ");
+//    String username = "admin";//input1.next();
+    static JTextField txtfield = new JTextField("Nazwa uzytkownika:");
+    static JTextField txtfield1 = new JTextField("Haslo:");
+    //Scanner input2 = new Scanner(System.in);
+//    System.out.println("Enter Password : ");
+    //String password = "123";//input2.next();
+    static String Username;
+    static String Username2;
+    static String Password;
+    
         public static void main(String[] a) {
-            String Username;
-            String Username2;
-            String Password;
-
-
+        	JButton login = new JButton("Login");
+        	LoginGUI log = new LoginGUI();	
             Password = "123";
             Username = "admin";
-            Username2 = "user";
-
-
-
-            Scanner input1 = new Scanner(System.in);
-            System.out.println("Enter Username : ");
-            String username = input1.next();
-
-            Scanner input2 = new Scanner(System.in);
-            System.out.println("Enter Password : ");
-            String password = input2.next();
-
-
-            if (username.equals(Username) && password.equals(Password)) {
-
-                String[] choices = { "taxi", "hotel", "air ticket", "train", "food" };
-                String input = (String) JOptionPane.showInputDialog(null, "Receipts",
-                        "Reimbursement claim", JOptionPane.QUESTION_MESSAGE, null, // Use
-                        // default
-                        // icon
-                        choices, // Array of choices
-                        choices[1]); // Initial choice
-                System.out.println(input);
-            }
-
-            else if (username.equals(Username)) {
-                System.out.println("Invalid Password!");
-            } else if (password.equals(Password)) {
-                System.out.println("Invalid Username!");
-            } else {
-                System.out.println("Invalid Username & Password!");
-            }
+            Username2 = "user";            
+            JFrame frame = new JFrame();
+            
+            login.addActionListener(log);
+            frame.setLayout(new GridLayout(3,1));
+    		frame.setSize(300,300);
+    		frame.setDefaultLookAndFeelDecorated(true);  
+    		
+    		frame.getContentPane().add(txtfield);
+    		frame.getContentPane().add(txtfield1);// Adds Button to content pane of frame
+    		frame.getContentPane().add(login);
+    		frame.setVisible(true);
+    		
 
 
     }
+
+		
 }
